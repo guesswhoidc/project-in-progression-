@@ -1,0 +1,128 @@
+[gd_scene load_steps=27 format=3 uid="uid://d3sgtwh6ge2gn"]
+
+[ext_resource type="Script" uid="uid://cgsmhlgtotso6" path="res://gameplay/mechanics/game_state.gd" id="1_ekw8u"]
+[ext_resource type="PackedScene" uid="uid://dry2pikgfi2sq" path="res://map_proto.tscn" id="1_ubfyf"]
+[ext_resource type="PackedScene" uid="uid://chyl37x717063" path="res://gameplay/character_proto.tscn" id="2_7trdo"]
+[ext_resource type="Script" uid="uid://bdfmfkkai7pkt" path="res://gameplay/mechanics/skill_data.gd" id="2_w2jnn"]
+[ext_resource type="Script" uid="uid://dkojppxqdm5d0" path="res://gameplay/mechanics/character_state_data.gd" id="3_etn2g"]
+[ext_resource type="PackedScene" uid="uid://bh4s30iudhxjd" path="res://ui/touch_ui.tscn" id="4_7trdo"]
+[ext_resource type="PackedScene" uid="uid://bf4cqxhnk2540" path="res://ui/hud.tscn" id="4_ekw8u"]
+[ext_resource type="Script" uid="uid://bm1bga8q6l6ga" path="res://gameplay/mechanics/inventory_item.gd" id="4_k4unx"]
+[ext_resource type="Resource" uid="uid://dl1q8wl8q7ld8" path="res://gameplay_assets/items/proto.tres" id="5_3elwm"]
+[ext_resource type="Script" uid="uid://dwfl7um1ol31x" path="res://gameplay/mechanics/inventory.gd" id="5_aci1t"]
+[ext_resource type="Script" uid="uid://ctm00y00m05rj" path="res://sky.gd" id="8_etn2g"]
+[ext_resource type="PackedScene" uid="uid://rkub1yqle65p" path="res://ui/on_screen_menu.tscn" id="12_5vdem"]
+
+[sub_resource type="Resource" id="Resource_ff4ei"]
+script = ExtResource("2_w2jnn")
+metadata/_custom_type_script = "uid://bdfmfkkai7pkt"
+
+[sub_resource type="Resource" id="Resource_k4unx"]
+script = ExtResource("2_w2jnn")
+metadata/_custom_type_script = "uid://bdfmfkkai7pkt"
+
+[sub_resource type="Resource" id="Resource_aci1t"]
+script = ExtResource("2_w2jnn")
+metadata/_custom_type_script = "uid://bdfmfkkai7pkt"
+
+[sub_resource type="Resource" id="Resource_3elwm"]
+script = ExtResource("2_w2jnn")
+metadata/_custom_type_script = "uid://bdfmfkkai7pkt"
+
+[sub_resource type="Resource" id="Resource_5vdem"]
+script = ExtResource("2_w2jnn")
+metadata/_custom_type_script = "uid://bdfmfkkai7pkt"
+
+[sub_resource type="Resource" id="Resource_54v5l"]
+script = ExtResource("2_w2jnn")
+metadata/_custom_type_script = "uid://bdfmfkkai7pkt"
+
+[sub_resource type="Resource" id="Resource_4aphy"]
+script = ExtResource("3_etn2g")
+attack = SubResource("Resource_ff4ei")
+ranged = SubResource("Resource_54v5l")
+defense = SubResource("Resource_aci1t")
+gathering = SubResource("Resource_3elwm")
+crafting = SubResource("Resource_k4unx")
+hunting = SubResource("Resource_5vdem")
+metadata/_custom_type_script = "uid://dkojppxqdm5d0"
+
+[sub_resource type="Resource" id="Resource_114ow"]
+script = ExtResource("4_k4unx")
+amount = 1
+item_type = ExtResource("5_3elwm")
+metadata/_custom_type_script = "uid://bm1bga8q6l6ga"
+
+[sub_resource type="Resource" id="Resource_7cgf8"]
+script = ExtResource("5_aci1t")
+items = Array[ExtResource("4_k4unx")]([SubResource("Resource_114ow"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://dwfl7um1ol31x"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vdem"]
+
+[sub_resource type="Environment" id="Environment_ubfyf"]
+background_mode = 1
+background_color = Color(0.85, 0.35700002, 0.66923326, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.94, 0.91697, 0.8742, 1)
+tonemap_mode = 3
+tonemap_exposure = 0.95
+fog_enabled = true
+fog_light_color = Color(0.1819785, 0.6229602, 0.61474764, 1)
+volumetric_fog_density = 0.543
+volumetric_fog_length = 31.5
+
+[sub_resource type="Gradient" id="Gradient_etn2g"]
+offsets = PackedFloat32Array(0, 0.18179521, 0.27801868, 0.43567508, 0.57334775, 0.6998258, 0.7744518, 1)
+colors = PackedColorArray(0.0009534942, 0.07476839, 0.4084616, 1, 0.00061477616, 0.07467653, 0.4082419, 1, 0.529697, 0.7568121, 1, 1, 0.5099095, 0.7686136, 0.9030147, 1, 0.9, 0.7056, 0.46799996, 1, 0.79, 0.3555, 0.43515834, 1, 0.39005327, 0.21774405, 0.4454384, 1, 0, 0.07450981, 0.40784314, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_etn2g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ff4ei"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GameState" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_ekw8u")
+main_player = SubResource("Resource_4aphy")
+main_inventory = SubResource("Resource_7cgf8")
+minute_of_day = 360
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8616735, 0.50746316, 0, -0.50746316, 0.8616735, 0, 4.054233, 0)
+light_color = Color(0.22399999, 0.581, 0.7, 1)
+directional_shadow_mode = 0
+
+[node name="CSGMesh3D" parent="." instance=ExtResource("1_ubfyf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6306734, 0)
+material = SubResource("ShaderMaterial_5vdem")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_7trdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28355983, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TouchUI" parent="CanvasLayer" instance=ExtResource("4_7trdo")]
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("4_ekw8u")]
+unique_name_in_owner = true
+
+[node name="OnScreenMenu" parent="CanvasLayer" instance=ExtResource("12_5vdem")]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ubfyf")
+script = ExtResource("8_etn2g")
+day_colors = SubResource("Gradient_etn2g")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2675695, 0, 3.3935146)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6449566, 0)
+mesh = SubResource("CapsuleMesh_etn2g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7341409, 0)
+shape = SubResource("CapsuleShape3D_ff4ei")

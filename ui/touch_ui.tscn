@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh4s30iudhxjd"]
+
+[ext_resource type="Script" uid="uid://dykd4t7dvcp76" path="res://ui/mobile_joystick.gd" id="1_slel2"]
+[ext_resource type="Texture2D" uid="uid://bi6d45a4rrudj" path="res://assets/Vector/Style C/button_circle.svg" id="2_brbsc"]
+[ext_resource type="Texture2D" uid="uid://b3c71p8o17rv3" path="res://assets/Vector/Style B/button_circle.svg" id="3_slel2"]
+[ext_resource type="StyleBox" uid="uid://cxxs5du6ncw1p" path="res://ui/mobile_button_style_default.tres" id="4_crq7d"]
+[ext_resource type="Script" uid="uid://bf50lpq25rqlt" path="res://ui/mobile_button_to_action.gd" id="5_5u220"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crq7d"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5518, 0.6758067, 0.89, 0.85882354)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5u220"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(5.486373, 6.323881, 7.103223, 0.6)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+corner_detail = 10
+
+[node name="MobileJoysticks" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MobileAnalogJoystick" type="Control" parent="." node_paths=PackedStringArray("outer_circle", "inner_circle")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_slel2")
+outer_circle = NodePath("OuterCircle")
+inner_circle = NodePath("InnerCircle")
+metadata/_custom_type_script = "uid://dykd4t7dvcp76"
+
+[node name="OuterCircle" type="TextureRect" parent="MobileAnalogJoystick"]
+self_modulate = Color(1, 1, 1, 0.5568628)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("2_brbsc")
+
+[node name="InnerCircle" type="TextureRect" parent="MobileAnalogJoystick"]
+modulate = Color(1, 1, 1, 0.6627451)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("3_slel2")
+
+[node name="MobileButtons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Interact" type="Button" parent="MobileButtons"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -354.0
+offset_top = -363.0
+offset_right = -254.0
+offset_bottom = -263.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(3, 3)
+theme_override_styles/normal = ExtResource("4_crq7d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_crq7d")
+theme_override_styles/hover = ExtResource("4_crq7d")
+theme_override_styles/focus = SubResource("StyleBoxFlat_5u220")
+toggle_mode = true
+action_mode = 0
+button_mask = 0
+script = ExtResource("5_5u220")
+action = &"player_interact"
+metadata/_custom_type_script = "uid://bf50lpq25rqlt"

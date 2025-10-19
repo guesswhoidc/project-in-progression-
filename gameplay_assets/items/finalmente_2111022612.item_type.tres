@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/Vector/Icons/icon_fire.svg" id="1_ixns5"]
+[ext_resource type="Script" path="res://gameplay/mechanics/item_type.gd" id="2_p4qua"]
+
+[resource]
+script = ExtResource("2_p4qua")
+icon = ExtResource("1_ixns5")
+name = "Finalmente"
+stack_size = 99
+metadata/_custom_type_script = "uid://cny24urkprh6l"

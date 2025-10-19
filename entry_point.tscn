@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn47w71221xwp"]
+
+[ext_resource type="PackedScene" uid="uid://d3j3cs46cirrl" path="res://screens/main_menu.tscn" id="1_h8jua"]
+[ext_resource type="Script" uid="uid://cnfmbj35h8gh6" path="res://entry_point.gd" id="1_ny5dk"]
+
+[node name="EntryPoint" type="Node3D"]
+script = ExtResource("1_ny5dk")
+gameplay_scene_path = "uid://d3sgtwh6ge2gn"
+
+[node name="Gameplay" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="2D" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="MainMenu" parent="2D" instance=ExtResource("1_h8jua")]
+unique_name_in_owner = true
+
+[node name="ToolsTarget" type="CanvasLayer" parent="."]

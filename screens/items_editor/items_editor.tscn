@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://cron0c84fawcs"]
+
+[ext_resource type="Script" uid="uid://bsqs0a14b1brd" path="res://screens/items_editor/items_editor.gd" id="1_k5drt"]
+
+[node name="Items Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k5drt")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 17.0
+offset_right = -14.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CreateItem" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Create Item"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(342, 100)
+dialog_text = "Are you sure you want to delete this item?"

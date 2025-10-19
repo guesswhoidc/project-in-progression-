@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf4cqxhnk2540"]
+
+[ext_resource type="Script" uid="uid://cck307vaatmrp" path="res://ui/hud.gd" id="1_276te"]
+[ext_resource type="Texture2D" uid="uid://dq7bllud0ydcp" path="res://icon.svg" id="1_rbyyf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rbyyf"]
+font_size = 64
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_276te")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 23.0
+offset_right = 555.0
+offset_bottom = 165.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_rbyyf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Character Name"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+show_percentage = false
+
+[node name="ProgressBar2" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+show_percentage = false
+
+[node name="ProgressBar3" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+show_percentage = false
+
+[node name="Hour" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+text = "00"
+label_settings = SubResource("LabelSettings_rbyyf")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+text = ":"
+label_settings = SubResource("LabelSettings_rbyyf")
+vertical_alignment = 1
+
+[node name="Minutes" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+text = "00"
+label_settings = SubResource("LabelSettings_rbyyf")
+vertical_alignment = 1
