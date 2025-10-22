@@ -37,7 +37,7 @@ text = "Start Game"
 [node name="DebugTools" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
-text = "Debug Tools"
+text = "Development Tools"
 
 [node name="Settings" type="Button" parent="HBoxContainer"]
 layout_mode = 2

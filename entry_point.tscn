@@ -6,6 +6,7 @@
 [node name="EntryPoint" type="Node3D"]
 script = ExtResource("1_ny5dk")
 gameplay_scene_path = "uid://d3sgtwh6ge2gn"
+tools_scene_path = "uid://dpxgriulw6sk"
 
 [node name="Gameplay" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -16,4 +17,5 @@ unique_name_in_owner = true
 [node name="MainMenu" parent="2D" instance=ExtResource("1_h8jua")]
 unique_name_in_owner = true
 
-[node name="ToolsTarget" type="CanvasLayer" parent="."]
+[node name="ToolsTarget" type="Node" parent="2D"]
+unique_name_in_owner = true

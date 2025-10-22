@@ -7,6 +7,11 @@
 theme_override_constants/separation = 39
 script = ExtResource("1_r2m7v")
 
+[node name="FileName" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "File Name"
+
 [node name="Name" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2

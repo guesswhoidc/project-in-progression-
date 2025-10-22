@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d3sgtwh6ge2gn"]
+[gd_scene load_steps=29 format=3 uid="uid://d3sgtwh6ge2gn"]
 
 [ext_resource type="Script" uid="uid://cgsmhlgtotso6" path="res://gameplay/mechanics/game_state.gd" id="1_ekw8u"]
 [ext_resource type="PackedScene" uid="uid://dry2pikgfi2sq" path="res://map_proto.tscn" id="1_ubfyf"]
@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bh4s30iudhxjd" path="res://ui/touch_ui.tscn" id="4_7trdo"]
 [ext_resource type="PackedScene" uid="uid://bf4cqxhnk2540" path="res://ui/hud.tscn" id="4_ekw8u"]
 [ext_resource type="Script" uid="uid://bm1bga8q6l6ga" path="res://gameplay/mechanics/inventory_item.gd" id="4_k4unx"]
-[ext_resource type="Resource" uid="uid://dl1q8wl8q7ld8" path="res://gameplay_assets/items/proto.tres" id="5_3elwm"]
+[ext_resource type="Resource" uid="uid://c0chratcx54ty" path="res://gameplay_assets/items/foguinho.item_type.tres" id="5_3elwm"]
 [ext_resource type="Script" uid="uid://dwfl7um1ol31x" path="res://gameplay/mechanics/inventory.gd" id="5_aci1t"]
+[ext_resource type="Resource" path="res://gameplay_assets/items/circulo.item_type.tres" id="6_5vdem"]
 [ext_resource type="Script" uid="uid://ctm00y00m05rj" path="res://sky.gd" id="8_etn2g"]
 [ext_resource type="PackedScene" uid="uid://rkub1yqle65p" path="res://ui/on_screen_menu.tscn" id="12_5vdem"]
 
@@ -53,9 +54,15 @@ amount = 1
 item_type = ExtResource("5_3elwm")
 metadata/_custom_type_script = "uid://bm1bga8q6l6ga"
 
+[sub_resource type="Resource" id="Resource_g3y2k"]
+script = ExtResource("4_k4unx")
+amount = 5
+item_type = ExtResource("6_5vdem")
+metadata/_custom_type_script = "uid://bm1bga8q6l6ga"
+
 [sub_resource type="Resource" id="Resource_7cgf8"]
 script = ExtResource("5_aci1t")
-items = Array[ExtResource("4_k4unx")]([SubResource("Resource_114ow"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+items = Array[ExtResource("4_k4unx")]([SubResource("Resource_114ow"), SubResource("Resource_g3y2k"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://dwfl7um1ol31x"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vdem"]
