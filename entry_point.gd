@@ -22,7 +22,7 @@ var gameplay_state := GameplayState.new(
 	func():
 		assert(gameplay_scene_path, "Please set a gameplay scene to be loaded.")
 		var gameplay_scene : PackedScene = load(gameplay_scene_path)
-		assert(gameplay_scene,"Gameplay scene loading failed, received null")
+		assert(gameplay_scene,"Gameplay scene loading failed, received null, check for errors in the scene dependencies.")
 		var node := gameplay_scene.instantiate()
 		%Gameplay.add_child(node), 
 	func():
