@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cj1w6e5she7b0" path="res://character_model.tscn" id="2_ivcyn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fl4k8"]
-radius = 0.3
+radius = 0.56
 height = 1.7817383
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
@@ -18,5 +18,6 @@ shape = SubResource("CapsuleShape3D_fl4k8")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.74791396, 0.6637957, 0, -0.6637957, 0.74791396, 0, 4.625, 4.403)
+doppler_tracking = 2
 current = true
 size = 2.8850455

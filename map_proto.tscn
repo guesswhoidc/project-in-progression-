@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dry2pikgfi2sq"]
+[gd_scene load_steps=11 format=3 uid="uid://dry2pikgfi2sq"]
 
 [ext_resource type="Texture2D" uid="uid://cqjsouyob8q4m" path="res://grass_02.png" id="1_rtiw5"]
+[ext_resource type="Texture2D" uid="uid://bea1l2ufss1np" path="res://assets/3D/textures/cobble01.jpg" id="2_4mk2g"]
+[ext_resource type="PackedScene" uid="uid://bt5eysfhaj5i4" path="res://assets/3D/tree.gltf" id="3_y6uly"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4mk2g"]
 size = Vector3(100, 1, 100)
@@ -12,8 +14,8 @@ albedo_color = Color(0.38403627, 0.58583343, 0.3608066, 1)
 albedo_texture = ExtResource("1_rtiw5")
 uv1_scale = Vector3(30, 30, 30)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubfyf"]
-albedo_color = Color(0.6, 0.37600002, 0.36, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nx1hg"]
+albedo_texture = ExtResource("2_4mk2g")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtiw5"]
 albedo_color = Color(0.74, 0.57128, 0.31820002, 1)
@@ -21,18 +23,25 @@ albedo_color = Color(0.74, 0.57128, 0.31820002, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6uly"]
 albedo_color = Color(0.25543275, 0.4751954, 0.74670964, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubfyf"]
+albedo_color = Color(0.6, 0.37600002, 0.36, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mk2g"]
+albedo_texture = ExtResource("2_4mk2g")
+uv1_scale = Vector3(20, 20, 20)
+
 [node name="CSGMesh3D" type="CSGMesh3D"]
 use_collision = true
 
 [node name="CSGBox3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08397062, -0.15491211, 0.045126915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08397062, 0.6439599, 0.045126915)
 mesh = SubResource("BoxMesh_4mk2g")
 material = SubResource("StandardMaterial3D_fl4k8")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.566674, 1.4422677, 0)
-size = Vector3(5, 3, 5)
-material = SubResource("StandardMaterial3D_ubfyf")
+transform = Transform3D(0.8365062, 0, 0.5479575, 0, 1, 0, -0.5479575, 0, 0.8365062, -6.8097334, 2.7245553, 0)
+size = Vector3(12.840942, 5.564575, 5)
+material = SubResource("StandardMaterial3D_nx1hg")
 
 [node name="CSGBox3D3" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.632984, 0, 15.69909)
@@ -46,3 +55,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.632984, -1.0371437, 15.699
 radius = 7.958
 sides = 4
 material = SubResource("StandardMaterial3D_y6uly")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.13146055, 0, 0.99132144, 0, 1, 0, -0.99132144, 0, 0.13146055, -12.506117, 3.6818986, 18.03481)
+size = Vector3(12.840942, 5.564575, 5)
+material = SubResource("StandardMaterial3D_ubfyf")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.637573, 0.8412132, 0.4995)
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_4mk2g")
+
+[node name="blockbench_export" parent="." instance=ExtResource("3_y6uly")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.982005, 1.1627454, 0)

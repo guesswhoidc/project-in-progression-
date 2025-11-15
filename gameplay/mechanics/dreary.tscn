@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c00ejt80tvnfk"]
+
+[ext_resource type="PackedScene" uid="uid://beovs7w20w2fc" path="res://assets/3D/dreary.glb" id="1_bqtkg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x81wy"]
+
+[node name="Dreary" type="CharacterBody3D"]
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_bqtkg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37111032, 0)
+shape = SubResource("SphereShape3D_x81wy")

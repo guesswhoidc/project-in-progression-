@@ -8,7 +8,7 @@ var game_time = GameTime.new()
 signal time_changed(new_time:float)	
 
 func _process(delta : float):
-	minute_of_day += delta * 10
+	minute_of_day += delta
 	minute_of_day = wrapf(minute_of_day, 0, GameTime.MIDNIGHT_TIME)
 	time_changed.emit(minute_of_day)
 	game_time.time = minute_of_day
@@ -25,6 +25,5 @@ func update_inventory_display():
 		slot.amount = item.amount
 		slot.display_name = item.item_type.name
 		slot.texture = item.item_type.icon
-	
 	
 	

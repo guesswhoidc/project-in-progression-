@@ -1,7 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://d3sgtwh6ge2gn"]
 
 [ext_resource type="Script" uid="uid://cgsmhlgtotso6" path="res://gameplay/mechanics/game_state.gd" id="1_ekw8u"]
-[ext_resource type="PackedScene" uid="uid://dry2pikgfi2sq" path="res://map_proto.tscn" id="1_ubfyf"]
 [ext_resource type="PackedScene" uid="uid://chyl37x717063" path="res://gameplay/character_proto.tscn" id="2_7trdo"]
 [ext_resource type="Script" uid="uid://bdfmfkkai7pkt" path="res://gameplay/mechanics/skill_data.gd" id="2_w2jnn"]
 [ext_resource type="Script" uid="uid://dkojppxqdm5d0" path="res://gameplay/mechanics/character_state_data.gd" id="3_etn2g"]
@@ -13,6 +12,8 @@
 [ext_resource type="Resource" path="res://gameplay_assets/items/circulo.item_type.tres" id="6_5vdem"]
 [ext_resource type="Script" uid="uid://ctm00y00m05rj" path="res://sky.gd" id="8_etn2g"]
 [ext_resource type="PackedScene" uid="uid://rkub1yqle65p" path="res://ui/on_screen_menu.tscn" id="12_5vdem"]
+[ext_resource type="PackedScene" uid="uid://dry2pikgfi2sq" path="res://map_proto.tscn" id="13_5vdem"]
+[ext_resource type="PackedScene" uid="uid://c00ejt80tvnfk" path="res://gameplay/mechanics/dreary.tscn" id="14_54v5l"]
 
 [sub_resource type="Resource" id="Resource_ff4ei"]
 script = ExtResource("2_w2jnn")
@@ -65,8 +66,6 @@ script = ExtResource("5_aci1t")
 items = Array[ExtResource("4_k4unx")]([SubResource("Resource_114ow"), SubResource("Resource_g3y2k"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://dwfl7um1ol31x"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vdem"]
-
 [sub_resource type="Environment" id="Environment_ubfyf"]
 background_mode = 1
 background_color = Color(0.85, 0.35700002, 0.66923326, 1)
@@ -101,10 +100,6 @@ transform = Transform3D(1, 0, 0, 0, 0.8616735, 0.50746316, 0, -0.50746316, 0.861
 light_color = Color(0.22399999, 0.581, 0.7, 1)
 directional_shadow_mode = 0
 
-[node name="CSGMesh3D" parent="." instance=ExtResource("1_ubfyf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6306734, 0)
-material = SubResource("ShaderMaterial_5vdem")
-
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_7trdo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28355983, 0)
 
@@ -133,3 +128,9 @@ mesh = SubResource("CapsuleMesh_etn2g")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7341409, 0)
 shape = SubResource("CapsuleShape3D_ff4ei")
+
+[node name="CSGMesh3D" parent="." instance=ExtResource("13_5vdem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="Dreary" parent="." instance=ExtResource("14_54v5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
