@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d3sgtwh6ge2gn"]
+[gd_scene load_steps=40 format=3 uid="uid://d3sgtwh6ge2gn"]
 
 [ext_resource type="Script" uid="uid://cgsmhlgtotso6" path="res://gameplay/mechanics/game_state.gd" id="1_ekw8u"]
 [ext_resource type="PackedScene" uid="uid://chyl37x717063" path="res://gameplay/character_proto.tscn" id="2_7trdo"]
@@ -7,13 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://bh4s30iudhxjd" path="res://ui/touch_ui.tscn" id="4_7trdo"]
 [ext_resource type="PackedScene" uid="uid://bf4cqxhnk2540" path="res://ui/hud.tscn" id="4_ekw8u"]
 [ext_resource type="Script" uid="uid://bm1bga8q6l6ga" path="res://gameplay/mechanics/inventory_item.gd" id="4_k4unx"]
-[ext_resource type="Resource" uid="uid://c0chratcx54ty" path="res://gameplay_assets/items/foguinho.item_type.tres" id="5_3elwm"]
+[ext_resource type="Resource" uid="uid://chi5g8ts0ds2t" path="res://gameplay_assets/items/foguinho.item_type.tres" id="5_3elwm"]
 [ext_resource type="Script" uid="uid://dwfl7um1ol31x" path="res://gameplay/mechanics/inventory.gd" id="5_aci1t"]
-[ext_resource type="Resource" path="res://gameplay_assets/items/circulo.item_type.tres" id="6_5vdem"]
+[ext_resource type="Resource" uid="uid://qe0rubt7qiro" path="res://gameplay_assets/items/circulo.item_type.tres" id="6_5vdem"]
 [ext_resource type="Script" uid="uid://ctm00y00m05rj" path="res://sky.gd" id="8_etn2g"]
 [ext_resource type="PackedScene" uid="uid://rkub1yqle65p" path="res://ui/on_screen_menu.tscn" id="12_5vdem"]
 [ext_resource type="PackedScene" uid="uid://dry2pikgfi2sq" path="res://map_proto.tscn" id="13_5vdem"]
 [ext_resource type="PackedScene" uid="uid://c00ejt80tvnfk" path="res://gameplay/mechanics/dreary.tscn" id="14_54v5l"]
+[ext_resource type="PackedScene" uid="uid://0urq78cdcfh1" path="res://gameplay/enemies/devils_hornet.tscn" id="15_4aphy"]
+[ext_resource type="Script" uid="uid://c4lrkmh25bplu" path="res://gameplay/mechanics/attack.gd" id="15_g3y2k"]
+[ext_resource type="Script" uid="uid://cb1d2e8vyfxt2" path="res://gameplay/mechanics/defense.gd" id="16_7n0dr"]
+[ext_resource type="PackedScene" uid="uid://dinavl7tsnt4i" path="res://gameplay/units/unit.tscn" id="16_g3y2k"]
+[ext_resource type="Script" uid="uid://c76s73fhy0w7f" path="res://unit_combat_data.gd" id="17_7n0dr"]
 
 [sub_resource type="Resource" id="Resource_ff4ei"]
 script = ExtResource("2_w2jnn")
@@ -86,11 +91,46 @@ colors = PackedColorArray(0.0009534942, 0.07476839, 0.4084616, 1, 0.00061477616,
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ff4ei"]
 
+[sub_resource type="Resource" id="Resource_f6l05"]
+script = ExtResource("15_g3y2k")
+metadata/_custom_type_script = "uid://c4lrkmh25bplu"
+
+[sub_resource type="Resource" id="Resource_jubd8"]
+script = ExtResource("16_7n0dr")
+metadata/_custom_type_script = "uid://cb1d2e8vyfxt2"
+
+[sub_resource type="Resource" id="Resource_7r1p5"]
+script = ExtResource("17_7n0dr")
+name = "Dreary"
+hp = 10.0
+base_hp = 10.0
+attack = SubResource("Resource_f6l05")
+defense = SubResource("Resource_jubd8")
+metadata/_custom_type_script = "uid://c76s73fhy0w7f"
+
+[sub_resource type="Resource" id="Resource_6upki"]
+script = ExtResource("15_g3y2k")
+metadata/_custom_type_script = "uid://c4lrkmh25bplu"
+
+[sub_resource type="Resource" id="Resource_eq7hm"]
+script = ExtResource("16_7n0dr")
+metadata/_custom_type_script = "uid://cb1d2e8vyfxt2"
+
+[sub_resource type="Resource" id="Resource_7n0dr"]
+script = ExtResource("17_7n0dr")
+name = "Horse"
+hp = 10.0
+base_hp = 10.0
+attack = SubResource("Resource_6upki")
+defense = SubResource("Resource_eq7hm")
+metadata/_custom_type_script = "uid://c76s73fhy0w7f"
+
 [node name="Node3D" type="Node3D"]
 
-[node name="GameState" type="Node" parent="."]
+[node name="GameState" type="Node" parent="." node_paths=PackedStringArray("player_body")]
 unique_name_in_owner = true
 script = ExtResource("1_ekw8u")
+player_body = NodePath("../CharacterBody3D")
 main_player = SubResource("Resource_4aphy")
 main_inventory = SubResource("Resource_7cgf8")
 minute_of_day = 360
@@ -130,7 +170,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7341409, 0)
 shape = SubResource("CapsuleShape3D_ff4ei")
 
 [node name="CSGMesh3D" parent="." instance=ExtResource("13_5vdem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, -2, 0)
 
-[node name="Dreary" parent="." instance=ExtResource("14_54v5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+[node name="Unit" parent="." instance=ExtResource("16_g3y2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+combat_data = SubResource("Resource_7r1p5")
+info_height = 1.6
+model_scene = ExtResource("14_54v5l")
+
+[node name="Unit2" parent="." instance=ExtResource("16_g3y2k")]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 8, 0, 6)
+combat_data = SubResource("Resource_7n0dr")
+info_height = 2.8
+model_scene = ExtResource("15_4aphy")

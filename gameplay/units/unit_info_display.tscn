@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs8ngpq1gih1l"]
+
+[ext_resource type="Script" uid="uid://bv4kvys6tqcns" path="res://gameplay/units/unit_info_display.gd" id="1_om2j0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cql7v"]
+font_size = 30
+font_color = Color(1, 0.93499994, 0.22000003, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 0.96862745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cql7v"]
+bg_color = Color(0.41, 0.1599, 0.21825661, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om2j0"]
+bg_color = Color(0.82, 0.36107332, 0.22139998, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="UnitInfoDisplay" type="CanvasLayer" node_paths=PackedStringArray("name_label", "health_bar")]
+script = ExtResource("1_om2j0")
+name_label = NodePath("Control/VBoxContainer/Name")
+health_bar = NodePath("Control/VBoxContainer/Health")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.5
+offset_top = -117.0
+offset_right = 87.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Name" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Unit Name"
+label_settings = SubResource("LabelSettings_cql7v")
+horizontal_alignment = 1
+
+[node name="Health" type="ProgressBar" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_cql7v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_om2j0")
+value = 50.0
+show_percentage = false

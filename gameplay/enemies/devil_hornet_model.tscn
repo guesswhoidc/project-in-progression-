@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnpq3asw6mr"]
+
+[ext_resource type="PackedScene" uid="uid://dxs60k1cjvk40" path="res://assets/3D/Devil's Horse Hornet.glb" id="1_rr6vh"]
+[ext_resource type="Material" uid="uid://cuue2ooe555qe" path="res://gameplay/enemies/devil_hornet_model.material" id="2_l4jss"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dytd"]
+albedo_color = Color(1, 0.816, 0.53999996, 1)
+roughness = 0.0
+
+[node name="devil hornet model" instance=ExtResource("1_rr6vh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="head" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="mandible_l" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 1.25, -0.375)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="mandible_r" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, 1.25, -0.375)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="eye_r" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="eye_l" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="torax" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.9375, 0.46875)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="butt" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1875, 0.453125)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="leg_1_r" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203125, 1.21875, -0.0625)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="leg_3_r" parent="." index="8"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0.203125, 0.859375, 0.234375)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="leg_2_r" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203125, 0.984375, 0.046875)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="leg_2_l" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.203125, 0.984375, 0.046875)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="leg_1_l" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.203125, 1.21875, -0.0625)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="leg_3_l" parent="." index="12"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.203125, 0.859375, 0.234375)
+surface_material_override/0 = ExtResource("2_l4jss")
+
+[node name="wing_l" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.5, 0.5)
+surface_material_override/0 = SubResource("StandardMaterial3D_2dytd")
+
+[node name="wing_r" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.5, 0.5)
+surface_material_override/0 = SubResource("StandardMaterial3D_2dytd")
+
+[node name="torax2" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.9375, 0.46875)
+surface_material_override/0 = ExtResource("2_l4jss")

@@ -1,21 +1,85 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf4cqxhnk2540"]
+[gd_scene load_steps=10 format=3 uid="uid://bf4cqxhnk2540"]
 
 [ext_resource type="Script" uid="uid://cck307vaatmrp" path="res://ui/hud.gd" id="1_276te"]
 [ext_resource type="Texture2D" uid="uid://dq7bllud0ydcp" path="res://icon.svg" id="1_rbyyf"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_276te"]
+bg_color = Color(0.33, 0.20240001, 0.1386, 0.7764706)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9687874, 0.7758137, 1.1551381e-06, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_546lt"]
+bg_color = Color(0.75, 0.26700002, 0.12000002, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ihmi"]
+bg_color = Color(0.309, 0.45, 0.27, 0.78039217)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2704652, 0.7505841, 0.7340723, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en2x2"]
+bg_color = Color(0.33599997, 0.84, 0.59639996, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v5rv"]
+bg_color = Color(0.32180995, 0.3009, 0.51, 0.72156864)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3220546, 0.94118714, 0.8079887, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q43x7"]
+bg_color = Color(0.7718258, 0.55825377, 1.347661e-06, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="LabelSettings" id="LabelSettings_rbyyf"]
 font_size = 64
 
-[node name="Hud" type="Control"]
+[node name="Hud" type="Control" node_paths=PackedStringArray("hour_label", "minutes_label", "health_bar", "stamina_bar", "hunger_bar")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_276te")
+hour_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/Hour")
+minutes_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/Minutes")
+health_bar = NodePath("HBoxContainer/VBoxContainer/Health")
+stamina_bar = NodePath("HBoxContainer/VBoxContainer/Stamina")
+hunger_bar = NodePath("HBoxContainer/VBoxContainer/Hunger")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 23.0
-offset_right = 555.0
+offset_right = 765.0
 offset_bottom = 165.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
@@ -28,41 +92,55 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Character Name"
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+[node name="Health" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_276te")
+theme_override_styles/fill = SubResource("StyleBoxFlat_546lt")
+value = 50.0
 show_percentage = false
 
-[node name="ProgressBar2" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+[node name="Stamina" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7ihmi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_en2x2")
+value = 50.0
 show_percentage = false
 
-[node name="ProgressBar3" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+[node name="Hunger" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_1v5rv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q43x7")
+value = 50.0
 show_percentage = false
 
-[node name="Hour" type="Label" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Hour" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 5
 text = "00"
 label_settings = SubResource("LabelSettings_rbyyf")
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="HBoxContainer"]
+[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 5
 text = ":"
 label_settings = SubResource("LabelSettings_rbyyf")
 vertical_alignment = 1
 
-[node name="Minutes" type="Label" parent="HBoxContainer"]
+[node name="Minutes" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 5
 text = "00"
