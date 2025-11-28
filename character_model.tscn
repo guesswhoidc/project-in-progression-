@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cj1w6e5she7b0"]
+[gd_scene load_steps=24 format=3 uid="uid://cj1w6e5she7b0"]
 
 [ext_resource type="PackedScene" uid="uid://d38hxnhn6ml0q" path="res://assets/3D/character.glb" id="1_wldta"]
 
@@ -771,6 +771,17 @@ animation = &"Idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tytig"]
 animation = &"Punch"
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_l8pwm"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kqu3a"]
+graph_offset = Vector2(0, 89.19596)
+nodes/output/position = Vector2(366.6667, 144.44444)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_tytig")
+nodes/Animation/position = Vector2(22.222223, 166.66667)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_l8pwm")
+nodes/TimeScale/position = Vector2(166.66667, 144.44444)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l8pwm"]
 animation = &"PunchStance"
 
@@ -796,28 +807,28 @@ switch_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_56d5t"]
 switch_mode = 1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wrdnr"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3wmtn"]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_clfoq"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vlgw7"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wrdnr"]
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3wmtn"]
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_56d5t"]
 reset_ends = true
 states/Idle/node = SubResource("AnimationNodeAnimation_wldta")
 states/Idle/position = Vector2(288.05865, 7.5864887)
-states/Punch/node = SubResource("AnimationNodeAnimation_tytig")
-states/Punch/position = Vector2(495.98157, -166.40962)
+states/Punch/node = SubResource("AnimationNodeBlendTree_kqu3a")
+states/Punch/position = Vector2(462.56262, -148.37161)
 states/PunchStance/node = SubResource("AnimationNodeAnimation_l8pwm")
 states/PunchStance/position = Vector2(443.44196, -66.65375)
 states/Walk/node = SubResource("AnimationNodeBlendTree_l8pwm")
 states/Walk/position = Vector2(403.5826, 92.40767)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tytig"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_kqu3a"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_56d5t"), "PunchStance", "Punch", SubResource("AnimationNodeStateMachineTransition_clfoq"), "Punch", "PunchStance", SubResource("AnimationNodeStateMachineTransition_vlgw7"), "PunchStance", "Idle", SubResource("AnimationNodeStateMachineTransition_wrdnr"), "Idle", "PunchStance", SubResource("AnimationNodeStateMachineTransition_3wmtn")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tytig"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_kqu3a"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_56d5t"), "PunchStance", "Idle", SubResource("AnimationNodeStateMachineTransition_wrdnr"), "Idle", "PunchStance", SubResource("AnimationNodeStateMachineTransition_3wmtn"), "PunchStance", "Punch", SubResource("AnimationNodeStateMachineTransition_clfoq"), "Punch", "PunchStance", SubResource("AnimationNodeStateMachineTransition_vlgw7")]
 graph_offset = Vector2(52.118164, -230.14941)
 
 [node name="character" instance=ExtResource("1_wldta")]
@@ -836,4 +847,5 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="." index="7"]
 tree_root = SubResource("AnimationNodeStateMachine_56d5t")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Punch/TimeScale/scale = 1.5
 parameters/Walk/WalkSpeed/scale = 1.6000000000000014

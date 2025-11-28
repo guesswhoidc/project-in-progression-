@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dinavl7tsnt4i"]
+[gd_scene load_steps=5 format=3 uid="uid://cy7u4gcaxvicp"]
 
-[ext_resource type="PackedScene" uid="uid://cs8ngpq1gih1l" path="res://gameplay/units/unit_info_display.tscn" id="1_s414p"]
+[ext_resource type="PackedScene" uid="uid://cs8ngpq1gih1l" path="res://gameplay/units/unit_info_display.tscn" id="1_7d4pl"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s414p"]
 
@@ -9,6 +9,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0brf"]
 
 [node name="Unit" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -21,7 +23,7 @@ disable_3d = true
 transparent_bg = true
 size = Vector2i(300, 100)
 
-[node name="UnitInfoDisplay" parent="Sprite3D/SubViewport" instance=ExtResource("1_s414p")]
+[node name="UnitInfoDisplay" parent="Sprite3D/SubViewport" instance=ExtResource("1_7d4pl")]
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2

@@ -8,11 +8,11 @@ const ASCENSION_TIME = .3
 const ATTACK_COOLDOWN = .6
 
 # Movement
-var speed = 300
-var jump_strength = 300
+var speed = 6
+var jump_strength = 3
 var current_ascension_timeout = 0
 var direction := Vector2()
-var gravity := Vector3.DOWN * 300
+var gravity := Vector3.DOWN * 3
 var last_tween : Tween = null
 
 # Combat
@@ -23,6 +23,8 @@ var combat_target = null
 var combat_target_data : UnitCombatData
 @onready var animations = $Model/AnimationTree["parameters/playback"]
 @export var interaction_range : Area3D
+
+
 
 func _ready() -> void:
 	assert(character_data)
@@ -69,22 +71,20 @@ func _process_combat(delta : float) -> void:
 	attack_count_down = ATTACK_COOLDOWN
 	animations.travel("Punch")
 	var result : Combat.CombatResolution = character_data.attack_obj().resolve(combat_target_data.defense_obj())
+	EffectSpawner.spawn_damage_bubble(self, combat_target, result)
 	if result.type == Combat.ResolutionType.HIT:
 		combat_target_data.hp -= result.damage
 		if combat_target_data.hp <= 0:
 			state = States.DEFAULT
-			return
-		print("Damage :", result.damage)
-	else:
-		print(result)
+
 
 func _physics_process(delta: float) -> void:
-	velocity = Vector3(direction.x, 0, direction.y) * speed * delta
+	velocity = Vector3(direction.x, 0, direction.y) * speed 
 	if Input.is_action_pressed("player_jump") && is_on_floor():
 		current_ascension_timeout = ASCENSION_TIME
 	if current_ascension_timeout > 0.0:
-		velocity += Vector3.UP * jump_strength * delta
+		velocity += Vector3.UP * jump_strength
 		current_ascension_timeout -= delta
 	elif !is_on_floor():
-		velocity += gravity * delta
+		velocity += gravity 
 	move_and_slide()

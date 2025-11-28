@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://qe0rubt7qiro"]
+[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://b0diy422mbe0x"]
 
 [ext_resource type="Texture2D" uid="uid://b017ay1g8nbxf" path="res://assets/Sprites/Highlights A/Default/button_circle_highlight.png" id="1_i2xsi"]
 [ext_resource type="Script" uid="uid://cny24urkprh6l" path="res://gameplay/mechanics/item_type.gd" id="2_jsplv"]
@@ -8,5 +8,5 @@ script = ExtResource("2_jsplv")
 icon = ExtResource("1_i2xsi")
 name = "Circulo"
 stack_size = 99
-order = 3
+order = 1
 metadata/_custom_type_script = "uid://cny24urkprh6l"

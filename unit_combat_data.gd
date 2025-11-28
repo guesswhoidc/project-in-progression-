@@ -11,6 +11,7 @@ const BASE_HP : float = 10
 @export var attack : Attack
 @export var defense : Defense
 @export var attack_cooldown := 2.0
+@export var movement_speed := 5.0
 
 signal health_changed(health: float)
 

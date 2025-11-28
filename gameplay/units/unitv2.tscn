@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqy1aigoq0r7y"]
+
+[ext_resource type="PackedScene" uid="uid://cs8ngpq1gih1l" path="res://gameplay/units/unit_info_display.tscn" id="1_l5386"]
+[ext_resource type="Script" uid="uid://0qeio3deo7xw" path="res://gameplay/units/unit.gd" id="1_s3u6m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s3u6m"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_75xa2"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xup0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s3u6m"]
+radius = 1.55
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_s3u6m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28526688, 0)
+shape = SubResource("BoxShape3D_s3u6m")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture = SubResource("ViewportTexture_75xa2")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(300, 100)
+
+[node name="UnitInfoDisplay" parent="Sprite3D/SubViewport" instance=ExtResource("1_l5386")]
+
+[node name="HurtBox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("BoxShape3D_0xup0")
+
+[node name="AttackRange" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("CylinderShape3D_s3u6m")
+debug_color = Color(0.98659736, 0.113147564, 0, 0.42)

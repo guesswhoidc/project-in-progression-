@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ActionClock="*res://lib/singletons/action_clock.gd"
+EffectSpawner="*res://lib/singletons/effect_spawner.tscn"
 
 [input]
 
@@ -62,6 +62,7 @@ player_jump={
 
 3d_physics/layer_1="GENERAL "
 3d_physics/layer_2="INTERACTABLE"
+3d_physics/layer_3="UNITS/PLAYER"
 
 [rendering]
 

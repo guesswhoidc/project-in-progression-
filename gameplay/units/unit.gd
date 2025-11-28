@@ -1,5 +1,5 @@
 @tool
-extends Node3D
+extends CharacterBody3D
 
 @export var combat_data : UnitCombatData
 @export var info_height := 0.0:
@@ -7,6 +7,15 @@ extends Node3D
 		info_height = height
 		if $Sprite3D:
 			$Sprite3D.position.y = info_height
+
+@export var model_rotation := 0.0:
+	set(rot):
+		model_rotation = rot
+		var rad = deg_to_rad(rot)
+		var children := $Model.get_children()
+		if children.size() > 0:
+			children[0].rotation.y = rad
+	
 @export var model_scene : PackedScene 
 @onready var display = $Sprite3D/SubViewport/UnitInfoDisplay
 @export_tool_button("Update preview")
@@ -26,6 +35,7 @@ func update_preview():
 	var model := model_scene.instantiate()
 	for child in $Model.get_children():
 		child.queue_free()
+	model.rotation.y = deg_to_rad(model_rotation)
 	$Model.add_child(model)
 	$Sprite3D.position.y = info_height
 
@@ -35,8 +45,8 @@ func _ready() -> void:
 	combat_data.health_changed.connect(func(_hp):
 		update_health()
 	)
-	$Area3D.set_meta("unit_node", self)
-	$Area3D.set_meta("combat_data", combat_data)
+	$HurtBox.set_meta("unit_node", self)
+	$HurtBox.set_meta("combat_data", combat_data)
 
 func _process(delta: float) -> void:
 	attack_cooldown = max(0, attack_cooldown - delta)
@@ -44,10 +54,18 @@ func _process(delta: float) -> void:
 		return
 	$Model.look_at(Vector3(target.position.x, 0, target.position.z))
 	$Model.rotation.y -= deg_to_rad(180)
+	if !$AttackRange.overlaps_body(target):
+		var dir := target.position - position
+		dir.y = 0
+		velocity = dir.normalized() * combat_data.movement_speed
+		move_and_slide()
+		return
 	if attack_cooldown > 0:
 		return
 	attack_cooldown = combat_data.attack_cooldown
-	target_data.hp -= combat_data.attack_obj().resolve(target_data.defense_obj()).damage	
+	var result := combat_data.attack_obj().resolve(target_data.defense_obj())
+	target_data.hp -= result.damage	
+	EffectSpawner.spawn_damage_bubble(self, target, result)
 
 func set_target(t : Node3D):
 	target = t
