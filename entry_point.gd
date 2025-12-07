@@ -2,6 +2,7 @@ extends Node3D
 
 @export_file("*.tscn") var gameplay_scene_path
 @export_file("*.tscn") var tools_scene_path
+@export_file("*.tscn") var settings_scene_path
 class GameplayState:
 	var on_enter : Callable
 	var on_exit : Callable
@@ -12,11 +13,13 @@ class GameplayState:
 enum States {
 	GAMEPLAY,
 	TOOLS,
+	SETTINGS,
 	MAIN_MENU
 }
 
 var change_state_to_gameplay := change_state.bind(States.GAMEPLAY)
 var change_state_to_tools := change_state.bind(States.TOOLS)
+var change_state_to_settings := change_state.bind(States.SETTINGS)
 
 var gameplay_state := GameplayState.new(
 	func():
@@ -34,11 +37,13 @@ var main_menu_state := GameplayState.new(
 		%MainMenu.show()
 		%MainMenu.start_game.pressed.connect(change_state_to_gameplay)
 		%MainMenu.tools.pressed.connect(change_state_to_tools)
+		%MainMenu.settings.pressed.connect(change_state_to_settings)
 		pass,
 	func():
 		%MainMenu.hide()
 		%MainMenu.tools.pressed.disconnect(change_state_to_tools)
 		%MainMenu.start_game.pressed.disconnect(change_state_to_gameplay)
+		%MainMenu.settings.pressed.disconnect(change_state_to_settings)
 		pass
 )
 var tools_state := GameplayState.new(
@@ -56,11 +61,25 @@ var tools_state := GameplayState.new(
 		%ToolsTarget.get_children().all(func(child): child.queue_free())
 		pass
 )
-
+var settings_state := GameplayState.new(
+	func():
+		assert(settings_scene_path, "Settings scene isn't selected propperly")
+		var settings_scene : PackedScene = load(settings_scene_path)
+		var instance = settings_scene.instantiate()
+		%ToolsTarget.add_child(instance)
+		(func():
+			instance.go_back_button.pressed.connect(change_state.bind(States.MAIN_MENU))	
+		).call_deferred()
+		pass,
+	func():
+		%ToolsTarget.get_children().all(func(child): child.queue_free())
+		pass
+)
 var states = {
 	States.GAMEPLAY: gameplay_state,
 	States.TOOLS: tools_state,
-	States.MAIN_MENU: main_menu_state
+	States.MAIN_MENU: main_menu_state,
+	States.SETTINGS: settings_state,
 }
 
 var current_state : States = States.MAIN_MENU

@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bh4s30iudhxjd"]
+[gd_scene load_steps=11 format=3 uid="uid://bh4s30iudhxjd"]
 
+[ext_resource type="Script" uid="uid://x1x88wersn5r" path="res://ui/touch_ui.gd" id="1_6y5bv"]
 [ext_resource type="Script" uid="uid://dykd4t7dvcp76" path="res://ui/mobile_joystick.gd" id="1_slel2"]
 [ext_resource type="Texture2D" uid="uid://bi6d45a4rrudj" path="res://assets/Vector/Style C/button_circle.svg" id="2_brbsc"]
 [ext_resource type="Texture2D" uid="uid://b3c71p8o17rv3" path="res://assets/Vector/Style B/button_circle.svg" id="3_slel2"]
 [ext_resource type="StyleBox" uid="uid://cxxs5du6ncw1p" path="res://ui/mobile_button_style_default.tres" id="4_crq7d"]
 [ext_resource type="Script" uid="uid://bf50lpq25rqlt" path="res://ui/mobile_button_to_action.gd" id="5_5u220"]
+[ext_resource type="Texture2D" uid="uid://cwpulq58n5w1" path="res://assets/Sprites/punch_icon.png" id="5_w7nt4"]
+[ext_resource type="Texture2D" uid="uid://nv031hsr5tev" path="res://assets/Sprites/jump_icon.png" id="7_6y5bv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crq7d"]
 content_margin_left = 4.0
@@ -46,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6y5bv")
 
 [node name="MobileAnalogJoystick" type="Control" parent="." node_paths=PackedStringArray("outer_circle", "inner_circle")]
 anchors_preset = 0
@@ -89,10 +93,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -217.0
-offset_top = -449.0
-offset_right = -148.66666
-offset_bottom = -380.66666
+offset_left = -266.00003
+offset_top = -445.0
+offset_right = -194.00003
+offset_bottom = -373.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(3, 3)
@@ -103,6 +107,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_5u220")
 toggle_mode = true
 action_mode = 0
 button_mask = 0
+icon = ExtResource("5_w7nt4")
 script = ExtResource("5_5u220")
 action = &"player_interact"
 metadata/_custom_type_script = "uid://bf50lpq25rqlt"
@@ -114,13 +119,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -376.0
-offset_top = -242.0
-offset_right = -307.66666
-offset_bottom = -173.66666
+offset_left = -296.00003
+offset_top = -235.0
+offset_right = -224.00003
+offset_bottom = -163.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(3, 3)
+scale = Vector2(1.5, 1.5)
 theme_override_styles/normal = ExtResource("4_crq7d")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_crq7d")
 theme_override_styles/hover = ExtResource("4_crq7d")
@@ -128,6 +133,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_5u220")
 toggle_mode = true
 action_mode = 0
 button_mask = 0
+icon = ExtResource("7_6y5bv")
 script = ExtResource("5_5u220")
 action = &"player_jump"
 metadata/_custom_type_script = "uid://bf50lpq25rqlt"

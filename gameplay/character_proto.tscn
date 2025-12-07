@@ -35,3 +35,5 @@ transform = Transform3D(1, 0, 0, 0, 0.74791396, 0.6637957, 0, -0.6637957, 0.7479
 doppler_tracking = 2
 current = true
 size = 2.8850455
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]

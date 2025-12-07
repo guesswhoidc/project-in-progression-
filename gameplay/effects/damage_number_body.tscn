@@ -1,7 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://nxaatcefnxcc"]
+[gd_scene load_steps=15 format=3 uid="uid://nxaatcefnxcc"]
 
 [ext_resource type="Script" uid="uid://dmtbpmsy05dp8" path="res://gameplay/effects/damage_number_body.gd" id="1_5lbfg"]
 [ext_resource type="PackedScene" uid="uid://tspm2xbpi4ka" path="res://ui/damage_bubble.tscn" id="1_lqcue"]
+[ext_resource type="AudioStream" uid="uid://dmgcvwymr26b8" path="res://assets/sfx/punch/impact.1.ogg" id="2_jv60g"]
+[ext_resource type="AudioStream" uid="uid://cfchkcsgwd0cb" path="res://assets/sfx/punch/impact.2.ogg" id="3_0761y"]
+[ext_resource type="AudioStream" uid="uid://bnsiy2t606pfw" path="res://assets/sfx/punch/impact.3.ogg" id="4_4ly0j"]
+[ext_resource type="AudioStream" uid="uid://dkc1pw18q1sk7" path="res://assets/sfx/punch/impact.4.ogg" id="5_noch1"]
+[ext_resource type="AudioStream" uid="uid://bfb7d6te2vrnc" path="res://assets/sfx/punch/impact.5.ogg" id="6_7wico"]
+[ext_resource type="AudioStream" uid="uid://cn4o7tdkccaaa" path="res://assets/sfx/punch/impact.6.ogg" id="7_ce6bl"]
+[ext_resource type="AudioStream" uid="uid://buaadn5gjd7e1" path="res://assets/sfx/punch/impact.7.ogg" id="8_blbey"]
+[ext_resource type="AudioStream" uid="uid://b2mg7jommgbus" path="res://assets/sfx/punch/impact.8.ogg" id="9_5vmal"]
+[ext_resource type="AudioStream" uid="uid://1aor44lri601" path="res://assets/sfx/punch/impact.9.ogg" id="10_pcc1t"]
+[ext_resource type="AudioStream" uid="uid://bptfuuek3cifp" path="res://assets/sfx/punch/impact.10.ogg" id="11_ihylo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5lbfg"]
 
@@ -14,6 +24,10 @@ lock_rotation = true
 angular_velocity = Vector3(0, -0.5235988, 0)
 constant_force = Vector3(0, 1, 0)
 script = ExtResource("1_5lbfg")
+damage_sounds = Array[AudioStream]([ExtResource("2_jv60g"), ExtResource("3_0761y"), ExtResource("4_4ly0j"), ExtResource("5_noch1"), ExtResource("6_7wico"), ExtResource("7_ce6bl"), ExtResource("8_blbey"), ExtResource("9_5vmal"), ExtResource("10_pcc1t"), ExtResource("11_ihylo")])
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = &"Sound Effects"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_5lbfg")

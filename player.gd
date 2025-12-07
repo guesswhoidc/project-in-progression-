@@ -15,6 +15,10 @@ var direction := Vector2()
 var gravity := Vector3.DOWN * 3
 var last_tween : Tween = null
 
+# Visual
+var looking_direction := Vector3.BACK * 100
+
+
 # Combat
 var character_data : CharacterStateData
 var attack_count_down := ATTACK_COOLDOWN
@@ -40,11 +44,7 @@ func _process(delta : float) -> void:
 
 func _process_default(delta : float) -> void:
 	if !direction.is_zero_approx():
-		#$Model.rotation.y = -(direction.angle() - (PI/2))
-		var pos = $Model.position
-		#$Model.look_at_from_position(Vector3.ZERO, Vector3(-direction.x, 0, -direction.y) * 10)
-		$Model.look_at(Vector3(pos.x - direction.x,0,pos.z - direction.y) * 100)
-		$Model.position = pos
+		update_direction(Vector3(direction.x, 0, direction.y) * 100)
 		animations.travel("Walk")
 	elif Input.is_action_pressed("player_interact"):
 		var targets := interaction_range.get_overlapping_areas()
@@ -64,10 +64,7 @@ func _process_combat(delta : float) -> void:
 		return
 	if attack_count_down > 0:
 		return
-	$Model.look_at(Vector3(combat_target.position.x, 0, combat_target.position.z))
-	$Model.rotation.x = 0
-	$Model.rotation.z = 0
-	$Model.rotation.y -= deg_to_rad(180)
+	update_direction(Vector3(combat_target.position.x, 0, combat_target.position.z))
 	attack_count_down = ATTACK_COOLDOWN
 	animations.travel("Punch")
 	var result : Combat.CombatResolution = character_data.attack_obj().resolve(combat_target_data.defense_obj())
@@ -88,3 +85,16 @@ func _physics_process(delta: float) -> void:
 	elif !is_on_floor():
 		velocity += gravity 
 	move_and_slide()
+
+
+func update_direction(target : Vector3) -> void:
+	if looking_direction == target:
+		return
+	var tween := create_tween()
+	tween.tween_method(func(direction):
+		$Model.look_at(Vector3(direction.x, 0, direction.z))
+		$Model.rotation.x = 0
+		$Model.rotation.z = 0
+		$Model.rotation.y -= deg_to_rad(180)	
+	,looking_direction, target, 0.3)
+	looking_direction = target

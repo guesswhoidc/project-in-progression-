@@ -33,7 +33,7 @@ func update_vitals():
 
 func update_inventory_display():
 	for i in range(main_inventory.items.size()):
-		var slot = %OnScreenMenu.item_slots[i]
+		var slot = %Hotbar.item_slots[i]
 		var item = main_inventory.items[i]
 		if !item or !slot:
 			continue

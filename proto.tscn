@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bh4s30iudhxjd" path="res://ui/touch_ui.tscn" id="4_7trdo"]
 [ext_resource type="PackedScene" uid="uid://bf4cqxhnk2540" path="res://ui/hud.tscn" id="4_ekw8u"]
 [ext_resource type="Script" uid="uid://bm1bga8q6l6ga" path="res://gameplay/mechanics/inventory_item.gd" id="4_k4unx"]
-[ext_resource type="Resource" uid="uid://chi5g8ts0ds2t" path="res://gameplay_assets/items/foguinho.item_type.tres" id="5_3elwm"]
+[ext_resource type="Resource" uid="uid://c0chratcx54ty" path="res://gameplay_assets/items/foguinho.item_type.tres" id="5_3elwm"]
 [ext_resource type="Script" uid="uid://dwfl7um1ol31x" path="res://gameplay/mechanics/inventory.gd" id="5_aci1t"]
-[ext_resource type="Resource" uid="uid://qe0rubt7qiro" path="res://gameplay_assets/items/circulo.item_type.tres" id="6_5vdem"]
+[ext_resource type="Resource" uid="uid://b0diy422mbe0x" path="res://gameplay_assets/items/circulo.item_type.tres" id="6_5vdem"]
 [ext_resource type="Script" uid="uid://ctm00y00m05rj" path="res://sky.gd" id="8_etn2g"]
-[ext_resource type="PackedScene" uid="uid://rkub1yqle65p" path="res://ui/on_screen_menu.tscn" id="12_5vdem"]
+[ext_resource type="PackedScene" uid="uid://bo8ush5qwsbct" path="res://ui/hotbar.tscn" id="11_g3y2k"]
 [ext_resource type="PackedScene" uid="uid://dry2pikgfi2sq" path="res://map_proto.tscn" id="13_5vdem"]
 [ext_resource type="PackedScene" uid="uid://bqy1aigoq0r7y" path="res://gameplay/units/unitv2.tscn" id="14_54v5l"]
 [ext_resource type="Script" uid="uid://c76s73fhy0w7f" path="res://unit_combat_data.gd" id="15_114ow"]
@@ -67,7 +67,7 @@ metadata/_custom_type_script = "uid://bm1bga8q6l6ga"
 
 [sub_resource type="Resource" id="Resource_7cgf8"]
 script = ExtResource("5_aci1t")
-items = Array[ExtResource("4_k4unx")]([SubResource("Resource_114ow"), SubResource("Resource_g3y2k"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+items = Array[ExtResource("4_k4unx")]([SubResource("Resource_114ow"), SubResource("Resource_g3y2k"), null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://dwfl7um1ol31x"
 
 [sub_resource type="Environment" id="Environment_ubfyf"]
@@ -133,7 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28355983, 0)
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_ekw8u")]
 unique_name_in_owner = true
 
-[node name="OnScreenMenu" parent="CanvasLayer" instance=ExtResource("12_5vdem")]
+[node name="Hotbar" parent="CanvasLayer" instance=ExtResource("11_g3y2k")]
 unique_name_in_owner = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
