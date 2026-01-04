@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://c0chratcx54ty"]
+[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3]
 
-[ext_resource type="Texture2D" uid="uid://bd5pt5dgncwli" path="res://assets/Vector/Icons/icon_fire.svg" id="1_vso7y"]
-[ext_resource type="Script" uid="uid://cny24urkprh6l" path="res://gameplay/mechanics/item_type.gd" id="2_1itxa"]
+[ext_resource type="Texture2D" path="res://assets/Vector/Icons/icon_fire.svg" id="1_vso7y"]
+[ext_resource type="Script" path="res://gameplay/mechanics/item_type.gd" id="2_1itxa"]
 
 [resource]
 script = ExtResource("2_1itxa")
 icon = ExtResource("1_vso7y")
 name = "Foguinho"
 stack_size = 99
-order = 3
+order = 1
 metadata/_custom_type_script = "uid://cny24urkprh6l"

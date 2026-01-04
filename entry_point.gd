@@ -20,6 +20,8 @@ enum States {
 var change_state_to_gameplay := change_state.bind(States.GAMEPLAY)
 var change_state_to_tools := change_state.bind(States.TOOLS)
 var change_state_to_settings := change_state.bind(States.SETTINGS)
+var close_game := func():
+	get_tree().quit()
 
 var gameplay_state := GameplayState.new(
 	func():
@@ -38,12 +40,14 @@ var main_menu_state := GameplayState.new(
 		%MainMenu.start_game.pressed.connect(change_state_to_gameplay)
 		%MainMenu.tools.pressed.connect(change_state_to_tools)
 		%MainMenu.settings.pressed.connect(change_state_to_settings)
+		%MainMenu.exit.pressed.connect(close_game)
 		pass,
 	func():
 		%MainMenu.hide()
 		%MainMenu.tools.pressed.disconnect(change_state_to_tools)
 		%MainMenu.start_game.pressed.disconnect(change_state_to_gameplay)
 		%MainMenu.settings.pressed.disconnect(change_state_to_settings)
+		%MainMenu.exit.pressed.disconnect(close_game)
 		pass
 )
 var tools_state := GameplayState.new(

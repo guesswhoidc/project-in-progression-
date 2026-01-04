@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gss2vo8e0mdh"
-path.etc2="res://.godot/imported/dpad.svg-fc971c112bffd984f59fd7f70eee821f.etc2.ctex"
+path.s3tc="res://.godot/imported/dpad.svg-fc971c112bffd984f59fd7f70eee821f.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Vector/Style A/dpad.svg"
-dest_files=["res://.godot/imported/dpad.svg-fc971c112bffd984f59fd7f70eee821f.etc2.ctex"]
+dest_files=["res://.godot/imported/dpad.svg-fc971c112bffd984f59fd7f70eee821f.s3tc.ctex"]
 
 [params]
 

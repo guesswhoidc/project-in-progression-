@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgn6v622mr8im"
-path.etc2="res://.godot/imported/cobble04.jpg-a819f193a14c7801862f72caeceed553.etc2.ctex"
+path.s3tc="res://.godot/imported/cobble04.jpg-a819f193a14c7801862f72caeceed553.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/3D/textures/cobble04.jpg"
-dest_files=["res://.godot/imported/cobble04.jpg-a819f193a14c7801862f72caeceed553.etc2.ctex"]
+dest_files=["res://.godot/imported/cobble04.jpg-a819f193a14c7801862f72caeceed553.s3tc.ctex"]
 
 [params]
 

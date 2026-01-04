@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://nxaatcefnxcc"]
 
 [ext_resource type="Script" uid="uid://dmtbpmsy05dp8" path="res://gameplay/effects/damage_number_body.gd" id="1_5lbfg"]
-[ext_resource type="PackedScene" uid="uid://tspm2xbpi4ka" path="res://ui/damage_bubble.tscn" id="1_lqcue"]
+[ext_resource type="PackedScene" uid="uid://tspm2xbpi4ka" path="res://gameplay/effects/damage_bubble.tscn" id="1_lqcue"]
 [ext_resource type="AudioStream" uid="uid://dmgcvwymr26b8" path="res://assets/sfx/punch/impact.1.ogg" id="2_jv60g"]
 [ext_resource type="AudioStream" uid="uid://cfchkcsgwd0cb" path="res://assets/sfx/punch/impact.2.ogg" id="3_0761y"]
 [ext_resource type="AudioStream" uid="uid://bnsiy2t606pfw" path="res://assets/sfx/punch/impact.3.ogg" id="4_4ly0j"]

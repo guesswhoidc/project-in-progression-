@@ -32,37 +32,37 @@ grow_vertical = 0
 layout_mode = 2
 
 [node name="ItemSlot" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_v0qo3")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ItemSlot2" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_v0qo3")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ItemSlot3" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_v0qo3")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ItemSlot4" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_v0qo3")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ItemSlot5" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_v0qo3")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ItemSlot6" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_v0qo3")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ItemSlot7" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_v0qo3")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ItemSlot8" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_v0qo3")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ItemSlot9" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_v0qo3")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2

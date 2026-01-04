@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dybbnjmwax13v"]
-
-[ext_resource type="PackedScene" uid="uid://bnh0tlmv08re8" path="res://player character.gltf" id="1_glpr6"]
-
-[node name="blockbench_export" instance=ExtResource("1_glpr6")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]

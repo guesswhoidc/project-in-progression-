@@ -1,7 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf4cqxhnk2540"]
+[gd_scene load_steps=11 format=3 uid="uid://bf4cqxhnk2540"]
 
 [ext_resource type="Script" uid="uid://cck307vaatmrp" path="res://ui/hud.gd" id="1_276te"]
 [ext_resource type="Texture2D" uid="uid://dq7bllud0ydcp" path="res://icon.svg" id="1_rbyyf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_276te"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_276te"]
 bg_color = Color(0.33, 0.20240001, 0.1386, 0.7764706)
@@ -43,7 +47,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v5rv"]
-bg_color = Color(0.32180995, 0.3009, 0.51, 0.72156864)
+bg_color = Color(0.42214608, 0.3124522, 0.11227428, 0.72156864)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -63,39 +67,57 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_rbyyf"]
-font_size = 64
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Hud" type="Control" node_paths=PackedStringArray("hour_label", "minutes_label", "health_bar", "stamina_bar", "hunger_bar")]
 layout_mode = 3
-anchors_preset = 0
+anchor_left = 0.04
+anchor_top = 0.037
+anchor_right = 0.3
+anchor_bottom = 0.2
+offset_left = -0.2800007
+offset_top = 0.024000168
+offset_right = 0.26397705
+offset_bottom = -0.32000732
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_276te")
-hour_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/Hour")
-minutes_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/Minutes")
-health_bar = NodePath("HBoxContainer/VBoxContainer/Health")
-stamina_bar = NodePath("HBoxContainer/VBoxContainer/Stamina")
-hunger_bar = NodePath("HBoxContainer/VBoxContainer/Hunger")
+hour_label = NodePath("HBoxContainer/HBoxContainer/Hour")
+minutes_label = NodePath("HBoxContainer/HBoxContainer/Minutes")
+health_bar = NodePath("HBoxContainer/HBoxContainer/VBoxContainer/Health")
+stamina_bar = NodePath("HBoxContainer/HBoxContainer/VBoxContainer/Stamina")
+hunger_bar = NodePath("HBoxContainer/HBoxContainer/VBoxContainer/Hunger")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 23.0
-offset_right = 765.0
-offset_bottom = 165.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_rbyyf")
+stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Character Name"
+label_settings = SubResource("LabelSettings_276te")
 
-[node name="Health" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+[node name="Health" type="ProgressBar" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/background = SubResource("StyleBoxFlat_276te")
@@ -103,7 +125,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_546lt")
 value = 50.0
 show_percentage = false
 
-[node name="Stamina" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+[node name="Stamina" type="ProgressBar" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/background = SubResource("StyleBoxFlat_7ihmi")
@@ -111,7 +133,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_en2x2")
 value = 50.0
 show_percentage = false
 
-[node name="Hunger" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+[node name="Hunger" type="ProgressBar" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/background = SubResource("StyleBoxFlat_1v5rv")
@@ -119,28 +141,21 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_q43x7")
 value = 50.0
 show_percentage = false
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 30
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Hour" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Hour" type="Label" parent="HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 5
 text = "00"
 label_settings = SubResource("LabelSettings_rbyyf")
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 5
 text = ":"
 label_settings = SubResource("LabelSettings_rbyyf")
 vertical_alignment = 1
 
-[node name="Minutes" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Minutes" type="Label" parent="HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 5
 text = "00"

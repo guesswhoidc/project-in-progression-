@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7fyys3g1gbff"
-path.etc2="res://.godot/imported/characer_character_texture.png-c2f9ca6b50b6f6b008f425aa33760794.etc2.ctex"
+path.s3tc="res://.godot/imported/characer_character_texture.png-c2f9ca6b50b6f6b008f425aa33760794.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b891176a436fe2240ef3427a257e86e6"
+"md5": "b6bb9d634b9c7d03271a9d3c2dce780e"
 }
 
 [deps]
 
 source_file="res://assets/3D/characer_character_texture.png"
-dest_files=["res://.godot/imported/characer_character_texture.png-c2f9ca6b50b6f6b008f425aa33760794.etc2.ctex"]
+dest_files=["res://.godot/imported/characer_character_texture.png-c2f9ca6b50b6f6b008f425aa33760794.s3tc.ctex"]
 
 [params]
 

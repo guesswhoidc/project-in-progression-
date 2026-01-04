@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://o1vl8nfg0eae"
-path.etc2="res://.godot/imported/dreary_2.png-732e56f07e079a15c97cd2ed65caa3b7.etc2.ctex"
+path.s3tc="res://.godot/imported/dreary_2.png-732e56f07e079a15c97cd2ed65caa3b7.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/3D/dreary_2.png"
-dest_files=["res://.godot/imported/dreary_2.png-732e56f07e079a15c97cd2ed65caa3b7.etc2.ctex"]
+dest_files=["res://.godot/imported/dreary_2.png-732e56f07e079a15c97cd2ed65caa3b7.s3tc.ctex"]
 
 [params]
 
