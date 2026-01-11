@@ -8,5 +8,5 @@ script = ExtResource("2_jsplv")
 icon = ExtResource("1_i2xsi")
 name = "Circulo"
 stack_size = 99
-order = 3
+order = 1
 metadata/_custom_type_script = "uid://cny24urkprh6l"

@@ -1,6 +1,7 @@
 extends Control
 
-const ItemDBPath = "res://gameplay_assets/itemdb.json"
+
+@onready var db = ItemDB.singleton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

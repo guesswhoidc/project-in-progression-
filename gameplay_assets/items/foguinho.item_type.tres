@@ -8,5 +8,5 @@ script = ExtResource("2_1itxa")
 icon = ExtResource("1_vso7y")
 name = "Foguinho"
 stack_size = 99
-order = 1
+order = 3
 metadata/_custom_type_script = "uid://cny24urkprh6l"
